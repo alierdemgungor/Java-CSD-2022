@@ -44,6 +44,42 @@ public class ArrayUtil {
         return a;
     }
 
+    public static int [] join(int [] a, int [] b)
+    {
+        int [] result = new int[a.length + b.length];
+        int idx = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            result[idx++] = a[i];
+
+        for (int i = 0; i < b.length; ++i)
+            result[idx++] = b[i];
+
+        return result;
+    }
+
+    public static int min(int [] a)
+    {
+        int result = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            if (a[i] < result)
+                result = a[i];
+
+        return result;
+    }
+
+    public static int max(int [] a)
+    {
+        int result = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            if (result < a[i])
+                result = a[i];
+
+        return result;
+    }
+
     public static void print(int [] a)
     {
         print(1, a);
@@ -75,15 +111,8 @@ public class ArrayUtil {
 
     public static void reverse(int [] a)
     {
-        //TODO:
-    }
-
-    public static void swap(double [] a, int i, int k)
-    {
-        double temp = a[i];
-
-        a[i] = a[k];
-        a[k] = temp;
+        for (int i = 0; i < a.length / 2; ++i)
+            swap(a, i, a.length - 1 - i);
     }
 
     public static int sum(int [] a)
@@ -94,5 +123,13 @@ public class ArrayUtil {
             total += a[i];
 
         return total;
+    }
+
+    public static void swap(double [] a, int i, int k)
+    {
+        double temp = a[i];
+
+        a[i] = a[k];
+        a[k] = temp;
     }
 }
